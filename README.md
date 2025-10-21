@@ -1,4 +1,4 @@
-# Docker-Intermedi-rio
+# Docker-Intermediario
 Atividade Prática 3º ano - Sistemas de Informação Checkpoint III
 
 # Exercício 1.1
@@ -137,3 +137,6 @@ Total reclaimed space: 0B
 
 # Exercício 1.3
 ![Imagem 1 Ex1.3](images/1.3.1.png)
+[analise-imagens](./analise-imagens.txt)
+
+# Exercício 2.1
