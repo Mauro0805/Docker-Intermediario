@@ -142,3 +142,12 @@ Total reclaimed space: 0B
 
 ## Exercício 2.1
 ![Imagem 1 Ex2.1](images/2.1.1.png)
+
+## Exercício 2.2
+![Imagem 1 Ex2.2](images/2.2.1.png)
+
+## Exercício 2.3
+![Imagem 1 Ex2.3](images/2.3.1.png)
+![Imagem 2 Ex2.3](images/2.3.2.png)
+
+## Exercício 2.4
