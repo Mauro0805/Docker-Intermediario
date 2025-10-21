@@ -1,10 +1,11 @@
 # Docker-Intermediario
 Atividade Prática 3º ano - Sistemas de Informação Checkpoint III
 
-# Exercício 1.1
+## Exercício 1.1
 ![Imagem 1 Ex1.1](images/1.1.1.png)
 ![Imagem 2 Ex1.1](images/1.1.2.png)
 ![Imagem 3 Ex1.1](images/1.1.3%20e%201.2.1.png)
+```bash
 C:\Users\labsfiap>docker images
 REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
@@ -99,11 +100,11 @@ b6000fc45f76   12 days ago   CMD ["python3"]                                 0B 
 <missing>      12 days ago   ENV LANG=C.UTF-8                                0B        buildkit.dockerfile.v0
 <missing>      12 days ago   ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…   0B        buildkit.dockerfile.v0
 <missing>      12 days ago   # debian.sh --arch 'amd64' out/ 'trixie' '@1…   87.4MB    debuerreotype 0.16
-
-# Exercício 1.2
+```
+## Exercício 1.2
 ![Imagem 1 Ex1.2](images/1.1.3%20e%201.2.1.png)
 ![Imagem 2 Ex1.2](images/1.2.2.png)
-
+```bash
 C:\Users\labsfiap>docker pull node:18-alpine
 18-alpine: Pulling from library/node
 dd71dde834b5: Pull complete
@@ -134,9 +135,10 @@ C:\Users\labsfiap>docker image prune
 WARNING! This will remove all dangling images.
 Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
-
-# Exercício 1.3
+```
+## Exercício 1.3
 ![Imagem 1 Ex1.3](images/1.3.1.png)
 [analise-imagens](./analise-imagens.txt)
 
-# Exercício 2.1
+## Exercício 2.1
+![Imagem 1 Ex2.1](images/2.1.1.png)
