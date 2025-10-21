@@ -150,4 +150,116 @@ Total reclaimed space: 0B
 ![Imagem 1 Ex2.3](images/2.3.1.png)
 ![Imagem 2 Ex2.3](images/2.3.2.png)
 
+```bash
+PS D:\Docker-Intermediario\app-python> docker build -t app-fiap:v1 .
+[+] Building 6.5s (10/10) FINISHED                                                                 docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 207B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                0.2s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/5] FROM docker.io/library/python:3.11-slim@sha256:b6000fc45f769f42c4c717dab2675bbb0ec6531c32a0483a2f78de0b  2.3s
+ => => resolve docker.io/library/python:3.11-slim@sha256:b6000fc45f769f42c4c717dab2675bbb0ec6531c32a0483a2f78de0b  2.3s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 299B                                                                                  0.0s
+ => [2/5] WORKDIR /app                                                                                             0.0s
+ => [3/5] COPY requirements.txt .                                                                                  0.0s
+ => [4/5] RUN pip install --no-cache-dir -r requirements.txt                                                       3.0s
+ => [5/5] COPY app.py .                                                                                            0.0s
+ => exporting to image                                                                                             0.8s
+ => => exporting layers                                                                                            0.5s
+ => => exporting manifest sha256:c26ac8b0f77e55fe0704170003ede970cbdae40503e97b94edcd679eb076dd0b                  0.0s
+ => => exporting config sha256:b4bffc164435a2e1fcf8a0fb61012ba59e72379abd76f81094142ef3408b5919                    0.0s
+ => => exporting attestation manifest sha256:bd3cc523c3058951f7dcb4e6e8abee1cf93bd19ded2cbc70877dfe285c1fdc26      0.0s
+ => => exporting manifest list sha256:93382709a28fd494998b2224732dc9041cf300ee35d01ef1f19317061f512261             0.0s
+ => => naming to docker.io/library/app-fiap:v1                                                                     0.0s
+ => => unpacking to docker.io/library/app-fiap:v1                                                                  0.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/2fa3bicr5gxz0uhsagdkbyt16
+PS D:\Docker-Intermediario\app-python> docker images | findstr app-fiap
+app-fiap     v1          93382709a28f   49 seconds ago   210MB
+PS D:\Docker-Intermediario\app-python> docker run -d -p 5000:5000 --name minha-app app-fiap:v1
+dae49fc0074dc90e9924bf18cb599adffa7b384a51590fdc86938deba824ec3c
+```
+
 ## Exercício 2.4
+![Imagem 1 Ex2.4](images/2.4.1.png)
+
+```bash
+PS D:\Docker-Intermediario\app-python> docker logs minha-app
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+```
+
+## Exercício 3.1
+![Imagem 1 Ex3.1](images/3.1.1.png)
+![Imagem 2 Ex3.1](images/3.1.2.png)
+
+```bash
+PS D:\Docker-Intermediario\app-python> docker volume create dados-postgres
+dados-postgres
+PS D:\Docker-Intermediario\app-python> docker volume ls
+DRIVER    VOLUME NAME
+local     dados-postgres
+PS D:\Docker-Intermediario\app-python> docker volume inspect dados-postgres
+[
+    {
+        "CreatedAt": "2025-10-21T23:17:03Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/dados-postgres/_data",
+        "Name": "dados-postgres",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+
+PS D:\Docker-Intermediario\app-python> docker run -d --name db-postgres -e POSTGRES_PASSWORD=fiap2024 -v dados-postgres:/var/lib/postgresql/data postgres:15-alpine
+Unable to find image 'postgres:15-alpine' locally
+15-alpine: Pulling from library/postgres
+6986ebe18735: Pull complete
+a623f40cda43: Pull complete
+c60bbb65edfc: Pull complete
+b1b6b375f3c3: Pull complete
+cad436dd248c: Pull complete
+84a991b0a3f7: Pull complete
+6cd0b72d8da2: Pull complete
+3945a9548b2f: Pull complete
+2ea3ebf7d306: Pull complete
+76774548c03c: Pull complete
+Digest: sha256:6bd113a3de3274beda0f056ebf0d75cf060dc4a493b72bea6f9d810dce63f897
+Status: Downloaded newer image for postgres:15-alpine
+bc7ed001dc9256cfd7145a0f54408edcdcbf4fd91a0fc0c7852385530ee42736
+PS D:\Docker-Intermediario\app-python> docker exec -it db-postgres psql -U postgres
+psql (15.14)
+Type "help" for help.
+
+postgres=#
+```
+
+## Exercício 3.2
+![Imagem 1 Ex3.2](images/3.2.1.png)
+![Imagem 2 Ex3.2](images/3.2.2.png)
+
+```bash
+D:\Docker-Intermediario\app-python>docker run -d --name db-postgres -e POSTGRES_PASSWORD=fiap2024 -v dados-postgres:/var/lib/postgresql/data postgres:15-alpine
+7316234a60afd430defb023e93c9bb13a537fa5ce9fd0eaa3beedda8ec152e1b
+
+D:\Docker-Intermediario\app-python>docker exec -it db-postgres psql -U postgres -d fiap_db -c "SELECT * FROM alunos;"
+ id |    nome
+----+------------
+  1 | João Silva
+(1 row)
+```
+
+## Exercício 3.3
+![Imagem 1 Ex3.3](images/3.3.1.png)
+
+```bash
+D:\Docker-Intermediario\app-python\projeto-web>docker run -d --name web-server -p 8080:80 -v D:\Docker-Intermediario\app-python\projeto-web:/usr/share/nginx/html nginx:alpine
+ca07adbcd481a43516bd939011cb795b19b095ab53c696d2a79a2018245d7737
+```
