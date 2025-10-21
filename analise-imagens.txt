@@ -1,0 +1,8 @@
+Por que algumas imagens são maiores que outras?
+Algumas imagens são maiores pois elas tem mais camadas, códigos e bibliotecas. Mais funções, complexidade e tamanho.
+
+O que significa a tag "alpine"?
+baseada no sistema operacional Alpine Linux que geralmente são mais leves e compactas do que imagens baseadas em outras distribuições.
+
+Qual a importância do versionamento?
+permite gerenciar diferentes versões de uma imagem e mantenha o historico de mudanças e a compatibilidade com programas antigos.
