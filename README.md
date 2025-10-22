@@ -137,8 +137,7 @@ Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
 ```
 ## Exercício 1.3
-![Imagem 1 Ex1.3](images/1.3.1.png)
-&nbsp;
+![Imagem 1 Ex1.3](images/1.3.1.png)  
 [analise-imagens](./analise-imagens.txt)
 
 ## Exercício 2.1
