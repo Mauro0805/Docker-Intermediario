@@ -138,7 +138,7 @@ Total reclaimed space: 0B
 ```
 ## Exercício 1.3
 ![Imagem 1 Ex1.3](images/1.3.1.png)
-
+&nbsp;
 [analise-imagens](./analise-imagens.txt)
 
 ## Exercício 2.1
